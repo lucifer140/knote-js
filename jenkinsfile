@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('apply') {
+            steps {
+               
+               sh '''
+               cd kube
+               kubectl apply -f knote.yaml
+               kubectl apply -f mongo.yaml
+               '''
+              
+            }
+        }
+        stage('build') {
+            steps {
+                sh '''
+                kubectl get all -o wide
+               '''
+            }
+        }
+        
+    }
+}
