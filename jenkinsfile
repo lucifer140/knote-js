@@ -6,9 +6,7 @@ pipeline {
             steps {
                
                sh '''
-               cd 03
-               ls
-               cd kube
+               cd 03/kube/
                kubectl apply -f knote.yaml
                kubectl apply -f mongo.yaml
                '''
